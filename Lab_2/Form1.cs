@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static Lab_2.Handler;
 
 namespace Lab_2
 {
@@ -97,10 +98,25 @@ namespace Lab_2
             dataGridViewMatrix.Rows.Clear();
             dataGridViewMatrix.ColumnCount = 3;
             dataGridViewMatrix.RowCount = 3;
+            textBoxRectangle.Clear();
+            DefaultColor();
+        }
+
+        private void DefaultColor()
+        {
+            for (int i = 0; i < dataGridViewMatrix.ColumnCount; i++)
+            {
+                for (int j = 0; j < dataGridViewMatrix.RowCount; j++)
+                {
+                    dataGridViewMatrix[i, j].Style.BackColor = System.Drawing.Color.White;
+                }
+            }
+
         }
 
         private void buttonRun_Click(object sender, EventArgs e)
         {
+            DefaultColor();
             int[,] matrix = new int[dataGridViewMatrix.ColumnCount, dataGridViewMatrix.RowCount];
             bool IsEmpty = false;
 
@@ -119,7 +135,7 @@ namespace Lab_2
                     }
                     catch
                     {
-                        MessageBox.Show(this,"Не удалось преобразовать значение этой ячейки в число","Ошибка матрицы");
+                        MessageBox.Show(this, "Не удалось преобразовать значение этой ячейки в число", "Ошибка матрицы");
                         dataGridViewMatrix.CurrentCell = dataGridViewMatrix[column, row];
                         return;
                     }
@@ -131,8 +147,18 @@ namespace Lab_2
             }
 
             Helper.FillMatrix(matrix, dataGridViewMatrix.ColumnCount, dataGridViewMatrix.RowCount);
-            int result = Helper.FindZeroRectangle();
-            textBoxResult.Text = result.ToString();
+            Info result = Helper.FindZeroRectangle();
+            textBoxResult.Text = result.Result.ToString();
+            textBoxRectangle.Text = "Полученный прямоугольник с суммой элементов, наиболее близких к нулю, задается координатами: [" + result.StartColumn.ToString() + ","
+                + result.StartRow.ToString() + "] и [" + result.EndColumn + "," + result.EndRow.ToString() + "]";
+
+            for (int i = result.StartColumn; i <= result.EndColumn; i++)
+            {
+                for (int j = result.StartRow; j <= result.EndRow; j++)
+                {
+                    dataGridViewMatrix[i, j].Style.BackColor = System.Drawing.Color.Aqua;
+                }
+            }
         }
     }
 }

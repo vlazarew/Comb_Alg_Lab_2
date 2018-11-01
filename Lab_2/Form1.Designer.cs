@@ -33,6 +33,7 @@
             this.labelResult = new System.Windows.Forms.Label();
             this.textBoxResult = new System.Windows.Forms.TextBox();
             this.dataGridViewMatrix = new System.Windows.Forms.DataGridView();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBoxMatrix = new System.Windows.Forms.GroupBox();
             this.groupBoxTools = new System.Windows.Forms.GroupBox();
             this.buttonAccept = new System.Windows.Forms.Button();
@@ -40,7 +41,8 @@
             this.textBoxColumns = new System.Windows.Forms.TextBox();
             this.labelRows = new System.Windows.Forms.Label();
             this.textBoxRows = new System.Windows.Forms.TextBox();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.label1 = new System.Windows.Forms.Label();
+            this.textBoxRectangle = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMatrix)).BeginInit();
             this.groupBoxMatrix.SuspendLayout();
             this.groupBoxTools.SuspendLayout();
@@ -69,7 +71,7 @@
             // labelResult
             // 
             this.labelResult.AutoSize = true;
-            this.labelResult.Location = new System.Drawing.Point(6, 230);
+            this.labelResult.Location = new System.Drawing.Point(8, 138);
             this.labelResult.Name = "labelResult";
             this.labelResult.Size = new System.Drawing.Size(249, 13);
             this.labelResult.TabIndex = 2;
@@ -77,7 +79,7 @@
             // 
             // textBoxResult
             // 
-            this.textBoxResult.Location = new System.Drawing.Point(261, 227);
+            this.textBoxResult.Location = new System.Drawing.Point(263, 135);
             this.textBoxResult.Name = "textBoxResult";
             this.textBoxResult.ReadOnly = true;
             this.textBoxResult.Size = new System.Drawing.Size(100, 20);
@@ -97,6 +99,11 @@
             this.dataGridViewMatrix.Size = new System.Drawing.Size(387, 292);
             this.dataGridViewMatrix.TabIndex = 4;
             // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "Column1";
+            this.Column1.Name = "Column1";
+            // 
             // groupBoxMatrix
             // 
             this.groupBoxMatrix.Controls.Add(this.dataGridViewMatrix);
@@ -109,6 +116,8 @@
             // 
             // groupBoxTools
             // 
+            this.groupBoxTools.Controls.Add(this.label1);
+            this.groupBoxTools.Controls.Add(this.textBoxRectangle);
             this.groupBoxTools.Controls.Add(this.buttonAccept);
             this.groupBoxTools.Controls.Add(this.labelColumns);
             this.groupBoxTools.Controls.Add(this.textBoxColumns);
@@ -169,10 +178,23 @@
             this.textBoxRows.TabIndex = 5;
             this.textBoxRows.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxColumns_KeyPress);
             // 
-            // Column1
+            // label1
             // 
-            this.Column1.HeaderText = "Column1";
-            this.Column1.Name = "Column1";
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(9, 164);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(147, 13);
+            this.label1.TabIndex = 9;
+            this.label1.Text = "Полученный прямоуголник:";
+            // 
+            // textBoxRectangle
+            // 
+            this.textBoxRectangle.Location = new System.Drawing.Point(162, 161);
+            this.textBoxRectangle.Multiline = true;
+            this.textBoxRectangle.Name = "textBoxRectangle";
+            this.textBoxRectangle.ReadOnly = true;
+            this.textBoxRectangle.Size = new System.Drawing.Size(202, 67);
+            this.textBoxRectangle.TabIndex = 10;
             // 
             // MainForm
             // 
@@ -207,6 +229,8 @@
         private System.Windows.Forms.Label labelRows;
         private System.Windows.Forms.TextBox textBoxRows;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox textBoxRectangle;
     }
 }
 

@@ -12,6 +12,31 @@ namespace Lab_2
         private int rows;
         private int[,] matrix;
 
+        //Струтура для грамотного вывода на форма
+        public struct Info
+        {
+            //Индекс начальной колонки
+            public int StartColumn;
+            //Индекс конечной колонки
+            public int EndColumn;
+            //Индекс начальной строки
+            public int StartRow;
+            //Индекс начальной строки
+            public int EndRow;
+            //Результат суммы прямоугольника
+            public int Result;
+
+            public Info(int _startcolumn, int _endcolumn, int _startrow, int _endrow, int _result)
+            {
+                StartColumn = _startcolumn;
+                EndColumn = _endcolumn;
+                StartRow = _startrow;
+                EndRow = _endrow;
+                Result = _result;
+            }
+
+        }
+
         public void FillMatrix(int[,] _matrix, int _columns, int _rows)
         {
             matrix = _matrix;
@@ -19,16 +44,16 @@ namespace Lab_2
             rows = _rows;
         }
 
-        public int FindZeroRectangle()
+        public Info FindZeroRectangle()
         {
-            int result = int.MaxValue;
+            Info result = new Info(0, 0, 0, 0, int.MaxValue);
 
             for (int i = 0; i < columns; i++)
             {
                 for (int j = 0; j < rows; j++)
                 {
-                    int temp = Run(i, j);
-                    if (Math.Abs(temp - 0) < Math.Abs(result - 0))
+                    Info temp = Run(i, j);
+                    if (Math.Abs(temp.Result - 0) < Math.Abs(result.Result - 0))
                     {
                         result = temp;
                     };
@@ -38,10 +63,11 @@ namespace Lab_2
             return result;
         }
 
-        public int Run(int _column, int _row)
+        public Info Run(int _column, int _row)
         {
             //Промежуточный результат на выход
-            int tempresult = int.MaxValue;
+            Info tempinfo = new Info(_column, _column, _row, _row, int.MaxValue);
+
             //Промежуточный результат по столбцам/строкам
             int temp_ = 0;
             //Проверка на первую итерацию (т.к. нужна сумма нескольких ячеек, то мы не можем учитывать значение единственной ячейки)
@@ -66,9 +92,11 @@ namespace Lab_2
 
                         //на второй итерации уже можно сравнивать суммы
                         temp += matrix[i, j];
-                        if (Math.Abs(temp - 0) < Math.Abs(tempresult - 0))
+                        if (Math.Abs(temp - 0) < Math.Abs(tempinfo.Result - 0))
                         {
-                            tempresult = temp;
+                            tempinfo.Result = temp;
+                            tempinfo.EndColumn = i;
+                            tempinfo.EndRow = j;
                         };
                     }
                     temp_ += temp;
@@ -81,9 +109,12 @@ namespace Lab_2
                     {
                         temp += matrix[i, j];
                     }
-                    if (Math.Abs(temp + temp_ - 0) < Math.Abs(tempresult - 0))
+                    if (Math.Abs(temp + temp_ - 0) <= Math.Abs(tempinfo.Result - 0))
                     {
-                        tempresult = temp + temp_;
+                        tempinfo.Result = temp + temp_;
+                        tempinfo.EndColumn = i;
+                        tempinfo.EndRow = rows - 1;
+                        temp_ += temp;
                     };
                 }
             }
@@ -109,9 +140,11 @@ namespace Lab_2
 
                         //на второй итерации уже можно сравнивать суммы
                         temp += matrix[i, j];
-                        if (Math.Abs(temp - 0) < Math.Abs(tempresult - 0))
+                        if (Math.Abs(temp - 0) < Math.Abs(tempinfo.Result - 0))
                         {
-                            tempresult = temp;
+                            tempinfo.Result = temp;
+                            tempinfo.EndColumn = i;
+                            tempinfo.EndRow = j;
                         };
                     }
                     temp_ += temp;
@@ -124,14 +157,17 @@ namespace Lab_2
                     {
                         temp += matrix[i, j];
                     }
-                    if (Math.Abs(temp + temp_ - 0) < Math.Abs(tempresult - 0))
+                    if (Math.Abs(temp + temp_ - 0) <= Math.Abs(tempinfo.Result - 0))
                     {
-                        tempresult = temp + temp_;
+                        tempinfo.Result = temp + temp_;
+                        tempinfo.EndColumn = columns - 1;
+                        tempinfo.EndRow = j;
+                        temp_ += temp;
                     };
                 }
             }
 
-            return tempresult;
+            return tempinfo;
         }
     }
 }

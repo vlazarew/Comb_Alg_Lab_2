@@ -8,3 +8,13 @@ D:\Универ\3 курс\Лабы_Компьютер\Комбинаторны�
 D:\Универ\3 курс\Лабы_Компьютер\Комбинаторные алгоритмы\GitHub\Comb_Alg_Lab_2\Lab_2\obj\Debug\Lab_2.csproj.CoreCompileInputs.cache
 D:\Универ\3 курс\Лабы_Компьютер\Комбинаторные алгоритмы\GitHub\Comb_Alg_Lab_2\Lab_2\obj\Debug\Lab_2.exe
 D:\Универ\3 курс\Лабы_Компьютер\Комбинаторные алгоритмы\GitHub\Comb_Alg_Lab_2\Lab_2\obj\Debug\Lab_2.pdb
+C:\Users\Lazar\Google Диск\Лабы_Компьютер\Комбинаторные алгоритмы\GitHub\Comb_Alg_Lab_2\Lab_2\bin\Debug\Lab_2.exe.config
+C:\Users\Lazar\Google Диск\Лабы_Компьютер\Комбинаторные алгоритмы\GitHub\Comb_Alg_Lab_2\Lab_2\bin\Debug\Lab_2.exe
+C:\Users\Lazar\Google Диск\Лабы_Компьютер\Комбинаторные алгоритмы\GitHub\Comb_Alg_Lab_2\Lab_2\bin\Debug\Lab_2.pdb
+C:\Users\Lazar\Google Диск\Лабы_Компьютер\Комбинаторные алгоритмы\GitHub\Comb_Alg_Lab_2\Lab_2\obj\Debug\Lab_2.csprojAssemblyReference.cache
+C:\Users\Lazar\Google Диск\Лабы_Компьютер\Комбинаторные алгоритмы\GitHub\Comb_Alg_Lab_2\Lab_2\obj\Debug\Lab_2.MainForm.resources
+C:\Users\Lazar\Google Диск\Лабы_Компьютер\Комбинаторные алгоритмы\GitHub\Comb_Alg_Lab_2\Lab_2\obj\Debug\Lab_2.Properties.Resources.resources
+C:\Users\Lazar\Google Диск\Лабы_Компьютер\Комбинаторные алгоритмы\GitHub\Comb_Alg_Lab_2\Lab_2\obj\Debug\Lab_2.csproj.GenerateResource.cache
+C:\Users\Lazar\Google Диск\Лабы_Компьютер\Комбинаторные алгоритмы\GitHub\Comb_Alg_Lab_2\Lab_2\obj\Debug\Lab_2.csproj.CoreCompileInputs.cache
+C:\Users\Lazar\Google Диск\Лабы_Компьютер\Комбинаторные алгоритмы\GitHub\Comb_Alg_Lab_2\Lab_2\obj\Debug\Lab_2.exe
+C:\Users\Lazar\Google Диск\Лабы_Компьютер\Комбинаторные алгоритмы\GitHub\Comb_Alg_Lab_2\Lab_2\obj\Debug\Lab_2.pdb
