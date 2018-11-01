@@ -12,6 +12,8 @@ namespace Lab_2
 {
     public partial class MainForm : Form
     {
+        Handler Helper = new Handler();
+
         public MainForm()
         {
             InitializeComponent();
@@ -19,6 +21,7 @@ namespace Lab_2
             textBoxRows.Text = "3";
             dataGridViewMatrix.ColumnCount = int.Parse(textBoxColumns.Text);
             dataGridViewMatrix.RowCount = int.Parse(textBoxRows.Text);
+
         }
 
         private void textBoxColumns_KeyPress(object sender, KeyPressEventArgs e)
@@ -63,20 +66,73 @@ namespace Lab_2
                 DialogResult dialogResult = MessageBox.Show(this, "Новый размер матрицы меньше текущего. Данные будут потеряны.", "Подтвердите изменение размера", MessageBoxButtons.YesNo);
                 if (dialogResult == DialogResult.Yes)
                 {
-                    dataGridViewMatrix.ColumnCount = currentColums; 
-                    dataGridViewMatrix.RowCount = currentRows;
-                    dataGridViewMatrix.Refresh();
-                    /*for (int i = countColumns + 1; i <= currentColums; i++)
-                    {
-                        dataGridViewMatrix.Columns.RemoveAt(i);
-                    }
-                    for (int i = countRows + 1; i <= currentColums; i++)
-                    {
-                        dataGridViewMatrix.Columns.RemoveAt(i);
-                    }*/
+                    dataGridViewMatrix.ColumnCount = countColumns;
+                    dataGridViewMatrix.RowCount = countRows;
+                }
+                else return;
+            }
+            else
+            {
+                dataGridViewMatrix.ColumnCount = countColumns;
+                dataGridViewMatrix.RowCount = countRows;
+            }
+        }
 
+        /*private void dataGridViewMatrix_EditingControlShowing(object sender, DataGridViewEditingControlShowingEventArgs e)
+        {
+            e.Control.KeyPress += new KeyPressEventHandler(Cell_KeyPress);
+        }
+
+        private void Cell_KeyPress(object Sender, KeyPressEventArgs e)
+        {
+            if (!Char.IsDigit(e.KeyChar) && e.KeyChar != 8)
+                e.KeyChar = Convert.ToChar("\0");
+        }*/
+
+        private void buttonClear_Click(object sender, EventArgs e)
+        {
+            textBoxColumns.Text = "3";
+            textBoxRows.Text = "3";
+            textBoxResult.Clear();
+            dataGridViewMatrix.Rows.Clear();
+            dataGridViewMatrix.ColumnCount = 3;
+            dataGridViewMatrix.RowCount = 3;
+        }
+
+        private void buttonRun_Click(object sender, EventArgs e)
+        {
+            int[,] matrix = new int[dataGridViewMatrix.ColumnCount, dataGridViewMatrix.RowCount];
+            bool IsEmpty = false;
+
+            for (int column = 0; column < dataGridViewMatrix.Columns.Count; column++)
+            {
+                for (int row = 0; row < dataGridViewMatrix.Rows.Count; row++)
+                {
+                    if (dataGridViewMatrix[column, row].Value is null)
+                    {
+                        IsEmpty = true;
+                        dataGridViewMatrix[column, row].Value = 0;
+                    }
+                    try
+                    {
+                        matrix[column, row] = Convert.ToInt32(dataGridViewMatrix[column, row].Value);
+                    }
+                    catch
+                    {
+                        MessageBox.Show(this,"Не удалось преобразовать значение этой ячейки в число","Ошибка матрицы");
+                        dataGridViewMatrix.CurrentCell = dataGridViewMatrix[column, row];
+                        return;
+                    }
                 }
             }
+            if (IsEmpty)
+            {
+                MessageBox.Show("Матрица оказалась заполнена не вся. Пустые ячейки будут заполнены нулями!");
+            }
+
+            Helper.FillMatrix(matrix, dataGridViewMatrix.ColumnCount, dataGridViewMatrix.RowCount);
+            int result = Helper.FindZeroRectangle();
+            textBoxResult.Text = result.ToString();
         }
     }
 }

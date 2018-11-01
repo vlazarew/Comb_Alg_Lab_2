@@ -35,11 +35,12 @@
             this.dataGridViewMatrix = new System.Windows.Forms.DataGridView();
             this.groupBoxMatrix = new System.Windows.Forms.GroupBox();
             this.groupBoxTools = new System.Windows.Forms.GroupBox();
-            this.labelRows = new System.Windows.Forms.Label();
-            this.textBoxRows = new System.Windows.Forms.TextBox();
+            this.buttonAccept = new System.Windows.Forms.Button();
             this.labelColumns = new System.Windows.Forms.Label();
             this.textBoxColumns = new System.Windows.Forms.TextBox();
-            this.buttonAccept = new System.Windows.Forms.Button();
+            this.labelRows = new System.Windows.Forms.Label();
+            this.textBoxRows = new System.Windows.Forms.TextBox();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMatrix)).BeginInit();
             this.groupBoxMatrix.SuspendLayout();
             this.groupBoxTools.SuspendLayout();
@@ -53,6 +54,7 @@
             this.buttonRun.TabIndex = 0;
             this.buttonRun.Text = "Запустить";
             this.buttonRun.UseVisualStyleBackColor = true;
+            this.buttonRun.Click += new System.EventHandler(this.buttonRun_Click);
             // 
             // buttonClear
             // 
@@ -62,6 +64,7 @@
             this.buttonClear.TabIndex = 1;
             this.buttonClear.Text = "Очистить";
             this.buttonClear.UseVisualStyleBackColor = true;
+            this.buttonClear.Click += new System.EventHandler(this.buttonClear_Click);
             // 
             // labelResult
             // 
@@ -82,8 +85,12 @@
             // 
             // dataGridViewMatrix
             // 
+            this.dataGridViewMatrix.AllowUserToAddRows = false;
+            this.dataGridViewMatrix.AllowUserToDeleteRows = false;
             this.dataGridViewMatrix.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewMatrix.ColumnHeadersVisible = false;
+            this.dataGridViewMatrix.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column1});
             this.dataGridViewMatrix.Location = new System.Drawing.Point(6, 19);
             this.dataGridViewMatrix.Name = "dataGridViewMatrix";
             this.dataGridViewMatrix.RowHeadersVisible = false;
@@ -118,22 +125,15 @@
             this.groupBoxTools.TabStop = false;
             this.groupBoxTools.Text = "Панель управления";
             // 
-            // labelRows
+            // buttonAccept
             // 
-            this.labelRows.AutoSize = true;
-            this.labelRows.Location = new System.Drawing.Point(8, 47);
-            this.labelRows.Name = "labelRows";
-            this.labelRows.Size = new System.Drawing.Size(148, 13);
-            this.labelRows.TabIndex = 4;
-            this.labelRows.Text = "Укажите количество строк:";
-            // 
-            // textBoxRows
-            // 
-            this.textBoxRows.Location = new System.Drawing.Point(180, 44);
-            this.textBoxRows.Name = "textBoxRows";
-            this.textBoxRows.Size = new System.Drawing.Size(100, 20);
-            this.textBoxRows.TabIndex = 5;
-            this.textBoxRows.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxColumns_KeyPress);
+            this.buttonAccept.Location = new System.Drawing.Point(57, 70);
+            this.buttonAccept.Name = "buttonAccept";
+            this.buttonAccept.Size = new System.Drawing.Size(271, 47);
+            this.buttonAccept.TabIndex = 8;
+            this.buttonAccept.Text = "Подтвердить изменение размера матрицы";
+            this.buttonAccept.UseVisualStyleBackColor = true;
+            this.buttonAccept.Click += new System.EventHandler(this.buttonAccept_Click);
             // 
             // labelColumns
             // 
@@ -152,15 +152,27 @@
             this.textBoxColumns.TabIndex = 7;
             this.textBoxColumns.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxColumns_KeyPress);
             // 
-            // buttonAccept
+            // labelRows
             // 
-            this.buttonAccept.Location = new System.Drawing.Point(57, 70);
-            this.buttonAccept.Name = "buttonAccept";
-            this.buttonAccept.Size = new System.Drawing.Size(271, 47);
-            this.buttonAccept.TabIndex = 8;
-            this.buttonAccept.Text = "Подтвердить изменение размера матрицы";
-            this.buttonAccept.UseVisualStyleBackColor = true;
-            this.buttonAccept.Click += new System.EventHandler(this.buttonAccept_Click);
+            this.labelRows.AutoSize = true;
+            this.labelRows.Location = new System.Drawing.Point(8, 47);
+            this.labelRows.Name = "labelRows";
+            this.labelRows.Size = new System.Drawing.Size(148, 13);
+            this.labelRows.TabIndex = 4;
+            this.labelRows.Text = "Укажите количество строк:";
+            // 
+            // textBoxRows
+            // 
+            this.textBoxRows.Location = new System.Drawing.Point(180, 44);
+            this.textBoxRows.Name = "textBoxRows";
+            this.textBoxRows.Size = new System.Drawing.Size(100, 20);
+            this.textBoxRows.TabIndex = 5;
+            this.textBoxRows.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxColumns_KeyPress);
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "Column1";
+            this.Column1.Name = "Column1";
             // 
             // MainForm
             // 
@@ -194,6 +206,7 @@
         private System.Windows.Forms.TextBox textBoxColumns;
         private System.Windows.Forms.Label labelRows;
         private System.Windows.Forms.TextBox textBoxRows;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
     }
 }
 
