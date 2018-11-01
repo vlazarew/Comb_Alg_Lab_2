@@ -160,5 +160,44 @@ namespace Lab_2
                 }
             }
         }
+
+        private void buttonGenerate_Click(object sender, EventArgs e)
+        {
+            Random random = new Random();
+            bool check = false;
+            bool choice = false;
+
+            for (int i = 0; i < dataGridViewMatrix.ColumnCount; i++)
+            {
+                for (int j = 0; j < dataGridViewMatrix.RowCount; j++)
+                {
+                    if (!(dataGridViewMatrix[i, j].Value is null))
+                    {
+                        if (!check)
+                        {
+                            DialogResult dialogResult = MessageBox.Show(this, "Обнаружены уже введенные данные. Перезатереть их?", "Вопрос", MessageBoxButtons.YesNo);
+                            if (dialogResult == DialogResult.Yes)
+                            {
+                                choice = true;
+                            }
+                            check = true;
+                        }
+                        if (choice)
+                        {
+                            dataGridViewMatrix[i, j].Value = random.Next(-100, 100);
+                        }
+                        else
+                        {
+                            continue;
+                        }
+                    }
+                    else
+                    {
+                        dataGridViewMatrix[i, j].Value = random.Next(-100, 100);
+                    }
+
+                }
+            }
+        }
     }
 }

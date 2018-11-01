@@ -36,13 +36,14 @@
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBoxMatrix = new System.Windows.Forms.GroupBox();
             this.groupBoxTools = new System.Windows.Forms.GroupBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.textBoxRectangle = new System.Windows.Forms.TextBox();
             this.buttonAccept = new System.Windows.Forms.Button();
             this.labelColumns = new System.Windows.Forms.Label();
             this.textBoxColumns = new System.Windows.Forms.TextBox();
             this.labelRows = new System.Windows.Forms.Label();
             this.textBoxRows = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.textBoxRectangle = new System.Windows.Forms.TextBox();
+            this.buttonGenerate = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMatrix)).BeginInit();
             this.groupBoxMatrix.SuspendLayout();
             this.groupBoxTools.SuspendLayout();
@@ -116,6 +117,7 @@
             // 
             // groupBoxTools
             // 
+            this.groupBoxTools.Controls.Add(this.buttonGenerate);
             this.groupBoxTools.Controls.Add(this.label1);
             this.groupBoxTools.Controls.Add(this.textBoxRectangle);
             this.groupBoxTools.Controls.Add(this.buttonAccept);
@@ -134,11 +136,29 @@
             this.groupBoxTools.TabStop = false;
             this.groupBoxTools.Text = "Панель управления";
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(9, 164);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(147, 13);
+            this.label1.TabIndex = 9;
+            this.label1.Text = "Полученный прямоуголник:";
+            // 
+            // textBoxRectangle
+            // 
+            this.textBoxRectangle.Location = new System.Drawing.Point(162, 161);
+            this.textBoxRectangle.Multiline = true;
+            this.textBoxRectangle.Name = "textBoxRectangle";
+            this.textBoxRectangle.ReadOnly = true;
+            this.textBoxRectangle.Size = new System.Drawing.Size(202, 67);
+            this.textBoxRectangle.TabIndex = 10;
+            // 
             // buttonAccept
             // 
-            this.buttonAccept.Location = new System.Drawing.Point(57, 70);
+            this.buttonAccept.Location = new System.Drawing.Point(180, 70);
             this.buttonAccept.Name = "buttonAccept";
-            this.buttonAccept.Size = new System.Drawing.Size(271, 47);
+            this.buttonAccept.Size = new System.Drawing.Size(183, 47);
             this.buttonAccept.TabIndex = 8;
             this.buttonAccept.Text = "Подтвердить изменение размера матрицы";
             this.buttonAccept.UseVisualStyleBackColor = true;
@@ -178,23 +198,15 @@
             this.textBoxRows.TabIndex = 5;
             this.textBoxRows.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxColumns_KeyPress);
             // 
-            // label1
+            // buttonGenerate
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(9, 164);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(147, 13);
-            this.label1.TabIndex = 9;
-            this.label1.Text = "Полученный прямоуголник:";
-            // 
-            // textBoxRectangle
-            // 
-            this.textBoxRectangle.Location = new System.Drawing.Point(162, 161);
-            this.textBoxRectangle.Multiline = true;
-            this.textBoxRectangle.Name = "textBoxRectangle";
-            this.textBoxRectangle.ReadOnly = true;
-            this.textBoxRectangle.Size = new System.Drawing.Size(202, 67);
-            this.textBoxRectangle.TabIndex = 10;
+            this.buttonGenerate.Location = new System.Drawing.Point(12, 70);
+            this.buttonGenerate.Name = "buttonGenerate";
+            this.buttonGenerate.Size = new System.Drawing.Size(162, 47);
+            this.buttonGenerate.TabIndex = 11;
+            this.buttonGenerate.Text = "Сгенерировать случайные значения";
+            this.buttonGenerate.UseVisualStyleBackColor = true;
+            this.buttonGenerate.Click += new System.EventHandler(this.buttonGenerate_Click);
             // 
             // MainForm
             // 
@@ -231,6 +243,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textBoxRectangle;
+        private System.Windows.Forms.Button buttonGenerate;
     }
 }
 
